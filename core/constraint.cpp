@@ -2,18 +2,18 @@
 
 using namespace std;
 
-class DLXSolver : public Solver {
+class ConstraintSolver : public Solver {
 public:
     string name() const override {
-        return "Dancing Links";
+        return "Constraint Propagation";
     }
 
     Result solve(Board puzzle, const Options& options) override {
         Result result;
 
         // setup result
-        // convert the puzzle into an exact-cover representation
-        // run the DLX search
+        // repeatedly fill cells with forced candidates
+        // optionally fall back to search when propagation stalls
         // fill result.finalBoard
         // return result
 
@@ -21,8 +21,8 @@ public:
     }
 
 private:
-    bool search(Board& board, Result& result, const Options& options) {
-        // DLX search logic goes here
+    bool propagate(Board& board, Result& result, const Options& options) {
+        // constraint propagation logic goes here
         return false;
     }
 };

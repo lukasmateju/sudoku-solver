@@ -26,14 +26,21 @@ struct Step {
 struct Result {
     int totalSteps = 0;
     bool solved = false;
-    Board finalBoard;
+    Board board;
     std::vector<Step> stepPath;
 };
 
 struct Options {
     bool collectSteps = false;
-    int maxSteps = 1000000;
 };
+
+inline void add_step(Result& result, const Options& options, int row, int col, int value, actionType action) {
+    result.totalSteps++;
+
+    if (options.collectSteps) {
+        result.stepPath.push_back({row, col, value, action});
+    }
+}
 
 
 class Solver {
@@ -43,6 +50,8 @@ public:
     virtual std::string name() const = 0;
     virtual Result solve(Board puzzle, const Options& options) = 0;
 };
+
+Result solve_backtracking(Board puzzle, const Options& options);
 
 
 
