@@ -21,6 +21,7 @@ pybind11_add_module(sudoku_cpp
     board.cpp
     backtracking.cpp
     constraint.cpp
+    hybrid.cpp
     dlx.cpp
     annealing.cpp
     bind.cpp

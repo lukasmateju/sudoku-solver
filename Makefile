@@ -11,7 +11,7 @@ TMP_DIR := tmp
 BT_TEST := $(TMP_DIR)/backtracking_test
 BT_TEST_OUTPUT := $(TMP_DIR)/backtracking_test_output.txt
 
-.PHONY: help configure build debug release check import-test bt-test run cli visualize benchmark clean
+.PHONY: help configure build debug release check import-test bt-test constraint-hybrid-test solver-test run cli visualize benchmark clean
 
 help:
 	@echo "Sudoku solver commands:"
@@ -21,7 +21,6 @@ help:
 	@echo "  make release      Configure and build an optimized release extension"
 	@echo "  make check        Syntax-check core C++ files"
 	@echo "  make import-test  Build and verify Python can import sudoku_cpp"
-	@echo "  make bt-test      Build and run temporary C++ backtracking test"
 	@echo "  make run          Build and run app/cli.py"
 	@echo "  make visualize    Build and run app/visualize.py"
 	@echo "  make benchmark    Build and run app/benchmark.py"
@@ -46,13 +45,12 @@ check:
 	c++ -std=c++17 -fsyntax-only core/board.cpp
 	c++ -std=c++17 -fsyntax-only core/backtracking.cpp
 	c++ -std=c++17 -fsyntax-only core/constraint.cpp
+	c++ -std=c++17 -fsyntax-only core/hybrid.cpp
 	c++ -std=c++17 -fsyntax-only core/dlx.cpp
 	c++ -std=c++17 -fsyntax-only core/annealing.cpp
 
 run: build
 	PYTHONPATH=$(BUILD_DIR) $(PYTHON) app/cli.py
-
-cli: run
 
 visualize: build
 	PYTHONPATH=$(BUILD_DIR) $(PYTHON) app/visualize.py

@@ -26,3 +26,8 @@ private:
         return false;
     }
 };
+
+Result solve_dlx(Board puzzle, const Options& options) {
+    DLXSolver solver;
+    return solver.solve(puzzle, options);
+}

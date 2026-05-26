@@ -26,3 +26,8 @@ private:
         return false;
     }
 };
+
+Result solve_annealing(Board puzzle, const Options& options){
+    AnnealingSolver solver;
+    return solver.solve(puzzle, options);
+}

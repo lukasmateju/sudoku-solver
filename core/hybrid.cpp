@@ -2,10 +2,10 @@
 
 using namespace std;
 
-class ConstraintSolver : public Solver {
+class HybridSolver : public Solver {
 public:
     string name() const override {
-        return "Constraint Propagation";
+        return "Constraint Propagation + Backtracking";
     }
 
     Result solve(Board puzzle, const Options& options) override {
@@ -16,7 +16,7 @@ public:
             return result;
         }
 
-        result.solved = propagate(puzzle, result, options);
+        result.solved = hybrid(puzzle, result, options);
         result.board = puzzle;
 
         if (result.solved) {
@@ -27,7 +27,8 @@ public:
     }
 
 private:
-    bool propagate(Board& board, Result& result, const Options& options) {
+    bool hybrid(Board& board, Result& result, const Options& options) {
+        // Constraint Propagation Logic
         bool boardChange = true;
 
         while (boardChange) {
@@ -47,12 +48,40 @@ private:
                 }
             }
         }
+        
+        if (board.is_complete()) { return true; }
+        
+        // Backtracking Logic
+        int row = 0;
+        int col = 0;
 
-        return board.is_complete();
+        if (!board.find_empty(row, col)) {
+            return board.is_complete();
+        }
+
+        vector<int> values = board.candidates(row, col);
+
+        for (int value : values) {
+            add_step(result, options, row, col, value, TRY_VALUE);
+
+            Board attemptBoard = board;
+            attemptBoard.set(row, col, value);
+
+            add_step(result, options, row, col, value, PLACE_VALUE);
+
+            if (hybrid(attemptBoard, result, options)) {
+                board = attemptBoard;
+                return true;
+            }
+
+            add_step(result, options, row, col, 0, BACKTRACK);
+        }
+
+        return false;
     }
 };
 
-Result solve_constraint(Board puzzle, const Options& options) {
-    ConstraintSolver solver;
+Result solve_hybrid(Board puzzle, const Options& options) {
+    HybridSolver solver;
     return solver.solve(puzzle, options);
 }
