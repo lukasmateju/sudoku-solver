@@ -46,7 +46,7 @@ check:
 	c++ -std=c++17 -fsyntax-only core/backtracking.cpp
 	c++ -std=c++17 -fsyntax-only core/constraint.cpp
 	c++ -std=c++17 -fsyntax-only core/hybrid.cpp
-	c++ -std=c++17 -fsyntax-only core/dlx.cpp
+	c++ -std=c++17 -fsyntax-only core/exactcover.cpp
 	c++ -std=c++17 -fsyntax-only core/annealing.cpp
 
 run: build

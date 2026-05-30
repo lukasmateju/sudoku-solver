@@ -33,5 +33,4 @@ compile_commands.json
 *.swo
 
 # ---- Project-specific ----
-tmp/
 temp/

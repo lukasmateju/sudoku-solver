@@ -8,7 +8,7 @@ Board::Board() {
     board = {0};
 }
 
-Board::Board(array<array<int, Board::SIZE>, Board::SIZE> boardIn) {
+Board::Board(Grid boardIn) {
     for (int row = 0; row < SIZE; row++) {
         for (int col = 0; col < SIZE; col++) {
             valid_value(boardIn[row][col]);
@@ -125,7 +125,7 @@ bool Board::find_empty(int& rowOut, int& colOut) const {
     return false;
 }
 
-array<array<int, Board::SIZE>, Board::SIZE> Board::to_array() const {
+Board::Grid Board::to_array() const {
     return board;
 }
 

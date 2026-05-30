@@ -22,7 +22,7 @@ pybind11_add_module(sudoku_cpp
     backtracking.cpp
     constraint.cpp
     hybrid.cpp
-    dlx.cpp
+    exactcover.cpp
     annealing.cpp
     bind.cpp
 )
