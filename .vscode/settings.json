@@ -1,0 +1,11 @@
+{
+    "cmake.sourceDirectory": "${workspaceFolder}/core",
+    "cmake.buildDirectory": "${workspaceFolder}/build",
+    "cmake.configureSettings": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "Python_EXECUTABLE": "${workspaceFolder}/.venv/bin/python",
+        "Python_ROOT_DIR": "${workspaceFolder}/.venv"
+    },
+    "C_Cpp.default.configurationProvider": "",
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json"
+}
