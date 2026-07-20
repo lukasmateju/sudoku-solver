@@ -23,6 +23,5 @@ pybind11_add_module(sudoku_cpp
     constraint.cpp
     hybrid.cpp
     exactcover.cpp
-    annealing.cpp
     bind.cpp
 )

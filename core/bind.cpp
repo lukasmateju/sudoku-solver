@@ -60,4 +60,9 @@ PYBIND11_MODULE(sudoku_cpp, m) {
     py::class_<Options>(m, "Options")
         .def(py::init<>())
         .def_readwrite("collectSteps", &Options::collectSteps);
+
+    m.def("solve_backtracking", &solve_backtracking, "Solve a board with recursive backtracking");
+    m.def("solve_constraint", &solve_constraint, "Solve a board with constraint propagation");
+    m.def("solve_hybrid", &solve_hybrid, "Solve a board with constraint propagation plus backtracking");
+    m.def("solve_exactcover", &solve_exactcover, "Solve a board with exact cover search");
 }

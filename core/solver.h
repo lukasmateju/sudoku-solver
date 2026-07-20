@@ -55,7 +55,6 @@ Result solve_backtracking(Board puzzle, const Options& options);
 Result solve_constraint(Board puzzle, const Options& options);
 Result solve_hybrid(Board puzzle, const Options& options);
 Result solve_exactcover(Board puzzle, const Options& options);
-Result solve_annealing(Board puzzle, const Options& options);
 
 
 #endif // DO NOT REMOVE
